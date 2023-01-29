@@ -162,7 +162,7 @@ Also, photos are organized by the sol (Martian rotation or day) on which they we
    ![Inifinite-Loading](./public/docs/effect.png)
 
 - Search Bar
-   ![Bar](./public/docs/search-bar.png)
+   ![Bar](./public/docs/bar.png)
 
 - Adding Bookmarks Modal
    ![Modal](./public/docs/modal.png)
