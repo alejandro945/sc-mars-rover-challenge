@@ -61,7 +61,7 @@ For the construction of our project we will use the following tools that will op
 
 ## Challenge requirements
 
-1. Connects to the NASA API (https://api.nasa.gov/).
+1. Connects to the [NASA API](https://api.nasa.gov/).
 2. Obtains photos from the 'Mars Rover' endpoint.
 3. Allows the user to see the photos of each rover (Curiosity, Opportunity and Spirit).
 4. The photos list should be paginated showing a max of 25 photos per page (dynamic loading similar to facebook/instagram will be nice, but not required).
@@ -95,11 +95,14 @@ sc-mars-rover-challenge
         |- common
         |- layout
      |- consumers
-     |- hooks
+     |- contexts
      |- interfaces
+     |- models
+        |- constanst
+        |- enums
+        |- types
      |- pages
      |- storage
-     |- types
   |- test
   .env
   .eslintrc.json
@@ -114,13 +117,13 @@ sc-mars-rover-challenge
 
 - **Src**: Base on JAMStack that it is an architecture, model and philosophy that determines a way to develop an application that meets the 5 pillars of a well "designed" application or framework: 1. Operational excellence, 2. Security, 3. reliability, 4. Efficiency, 5. Cost Optimization.
 
-   - Components: Are independent and reusable bits of code. They serve the same purpose as JS functions, but work in isolation and return HTML base on **hydratation** principle. (Attach to UI Layer)
-   - Consumers: Serve as an entry and exit point for a network as all data must pass through or communicate with the gateway prior to being routed. The use of Javascript to consume data over HTTP has allowed the growth of a myriad of services that provide various functionalities.(Attach to Gateway Layer)
-   - Hooks: Are the functions which "hook into" React state and lifecycle features from function components. (Attach to UI Layer)
-   - Interfaces: Contracts that allow the definition of rules necessary for the application and that may be defined by external agents regardless of their specific implementation (Attach to Application Rules)
-   - Pages: (Attach UI Layer)
-   - Storage: The Web Storage API provides a mechanism for storing and retrieving smaller, data items consisting of a name and a corresponding value. This is useful when you just need to store some simple data, like the user's name, whether they are logged in, what color to use for the background of the screen, etc.(Attach UI Layer)
-   - Types: Entities definition base on nasa api and data structures base on filter requirements(Attach to Enterprise Rules)
+   - **Components**: Are independent and reusable bits of code. They serve the same purpose as JS functions, but work in isolation and return HTML base on **hydratation** principle. (Attach to UI Layer)
+   - **Consumers**: Serve as an entry and exit point for a network as all data must pass through or communicate with the gateway prior to being routed. The use of Javascript to consume data over HTTP has allowed the growth of a myriad of services that provide various functionalities.(Attach to Gateway Layer)
+   - **Contexts**: Are the global react states and lifecycle features from function components. Can be consume by ny component inside the main provider (Attach to UI Layer)
+   - **Interfaces**: Contracts that allow the definition of rules necessary for the application and that may be defined by external agents regardless of their specific implementation (Attach to Application Rules)
+   - **Model**: Entities definition base on nasa api and data structures base on filter requirements(Attach to Enterprise Rules)
+   - **Pages**: Where are declare xml that we will render. TSX is a TypeScript extension that allows us to write code that is closer visually to HTML, which improves the readability of the code and makes it easier to understand.(Attach UI Layer)
+   - **Storage**: The Web Storage API provides a mechanism for storing and retrieving smaller, data items consisting of a name and a corresponding value. This is useful when you just need to store some simple data, like the user's name, whether they are logged in, what color to use for the background of the screen, etc.(Attach UI Layer)
 
 - **Test**: E2E tests using Playwright that simulate actual user actions and are designed to test how a real user would likely use the application.
 
@@ -148,7 +151,7 @@ Also, photos are organized by the sol (Martian rotation or day) on which they we
 |PANCAM|Panoramic Camera|  ❌ |  ✅  | ✅  |
 |MINITES|Miniature Thermal Emission Spectrometer (Mini-TES)|  ❌ |  ✅  | ✅  |
 
-**Taken from Nasa Apis Documentation**
+[**Taken from Nasa Apis Documentation**](https://api.nasa.gov)
 
 ## Test Design
 

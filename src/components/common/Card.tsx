@@ -1,10 +1,11 @@
-import { Box, Center, Heading, Image, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Photo } from '@/src/models/types/Photo';
+import { Box, Center, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const IMAGE = 'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
-const Card = () => {
+const Card: React.FC<Photo> = ({ id, img_src, rover, camera, sol, earth_date }) => {
     return (
-        <Center py={12}>
+        <Center py={6}>
             <Box role={'group'} p={6} maxW={'330px'} w={'full'} bg={'white'} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
                 <Box rounded={'lg'} mt={-12} pos={'relative'} height={'230px'}
                     _after={{ transition: 'all .3s ease', content: '""', w: 'full', h: 'full', pos: 'absolute', top: 5, left: 0, backgroundImage: `url(${IMAGE})`, filter: 'blur(15px)', zIndex: -1, }}

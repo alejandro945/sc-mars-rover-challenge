@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 
 const GlobalLayout: React.FC<{ children: React.ReactElement }> = ({ children }) => {
     return (
-        <Box minHeight="100%">
+        <Box>
             <NavBar />
             <Container flexGrow={1} maxW='8xl' height="100vh" pt={40}>
                 {children}
