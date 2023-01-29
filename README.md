@@ -160,8 +160,6 @@ Also, photos are organized by the sol (Martian rotation or day) on which they we
 
 - Instagram Effect ⭐️
    ![Inifinite-Loading](./public/docs/effect.png)
-
-- Search Bar
    ![Bar](./public/docs/bar.png)
 
 - Adding Bookmarks Modal
@@ -180,8 +178,37 @@ API_ENDPOINT=https://api.nasa.gov/mars-photos/api/v1/rovers/
 API_KEY=GBT5DYgpgIEimLi3Gua9eisB3B6dsWOhKhhKn24K
 ```
 
-## Test Design
+## Testing 🧪
 
+**Playwright Testing**: Reliable en-to-end testing for modern web apps. Any Browser · One API · Any Platform · Full Isolation · Fast Execution · Porwerful Tooling.
+
+**Locators:** A way to find elements on the page at any moment with built in auto-waiting and retry-ability
+
+```ts
+const mars = page.locator("text=Mars Rovers Challenge");
+```
+
+**Web first assertions:** 
+
+```ts
+await expect(locator).toBeChecked()
+await expect(locator).toBeDisabled()
+await expect(locator).toBeEmpty()
+await expect(locator).toBeVisible()
+await expect(locator).toBeEnabled()
+```
+
+**Show Reports:** 
+
+```bash
+npx playwright show-report
+```
+
+**Trace Files:**  Record a trace for each test (DOM Snapshots 📸)
+
+```bash
+npx playwright test --trace on
+```
 
 ## Deployment
 
