@@ -22,11 +22,11 @@ const Main = () => {
     <>
       <SModal />
       <FilterDrawer />
-      <InfiniteScroll swr={swr} loadingIndicator={<Loading />} endingIndicator={<Empty />} isReachingEnd={(swr) => swr.data?.[0][filterData.camera ? 'photos' : 'latest_photos']?.length === 0 || swr.data?.[swr.data?.length - 1][filterData.camera ? 'photos' : 'latest_photos']?.length < 25} >
+      <InfiniteScroll swr={swr} loadingIndicator={<Loading />} endingIndicator={<Empty />} isReachingEnd={(swr) => swr.data?.[0][(filterData.camera || filterData.dateValue) ? 'photos' : 'latest_photos']?.length === 0 || swr.data?.[swr.data?.length - 1][(filterData.camera || filterData.dateValue) ? 'photos' : 'latest_photos']?.length < 25} >
         <>
           {swr.data?.map((set: any, index: number) => (
             <SimpleGrid key={index} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing="30px" width="100%" py={[2, 4]}>
-              {set[filterData.camera ? 'photos' : 'latest_photos']?.map((photo: Photo, index: number) => (
+              {set[(filterData.camera || filterData.dateValue) ? 'photos' : 'latest_photos']?.map((photo: Photo, index: number) => (
                 <React.Fragment key={photo.id}>
                   {(index < 24) && <Card {...photo} />}
                 </React.Fragment>

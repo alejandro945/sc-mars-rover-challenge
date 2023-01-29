@@ -210,7 +210,43 @@ npx playwright show-report
 npx playwright test --trace on
 ```
 
+**Test Endpoints and filters**
+
+- **Default Latest Photos:** If you just want to receive photo data for the most recent Sol for which photos exist for a particular rover, you can visit the /latest_photos endpoint.
+
+```ts
+//https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=DEMO_KEY
+```
+
+- **Martian Sol:** Queries by sol can range from 0, which is the date of landing, up to the current maximum in the database. The current max sol for each rover can be found at that rover's endpoint.
+```ts
+//https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=DEMO_KEY&sol=1000
+{
+   rover: curiosity,
+   sol: 1000
+}
+```
+-**Earth Date:** Dates should be formatted as 'yyyy-mm-dd'. The earliest date available is the date of landing for each rover.
+```ts
+//https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=DEMO_KEY&earth_date=2015-6-3
+{
+   rover: curiosity,
+   earth_date: "2015-6-3"
+}
+```
+-**Camera** The camera parameter is not case sensitive, but must be one of the camera abbreviations listed in the table above for the respective rover.
+```ts
+//https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=DEMO_KEY&earth_date=2015-6-3&camera=pancam
+{
+   rover: opportunity,
+   earth_date: "2015-6-3",
+   camera: "pacman"
+}
+```
+
 ## Deployment
+
+[Watch here 👇](https://sc-mars-rover-challenge-nl9q7j5bu-altagama.vercel.app/)
 
 **Vercel** enables you to develop, preview, and ship every Next.js feature, without configuration, to the best frontend infrastructure.
 

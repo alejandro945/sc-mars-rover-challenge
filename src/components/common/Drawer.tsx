@@ -56,7 +56,7 @@ const FilterDrawer = () => {
                                 <FormHelperText>Select your date filter</FormHelperText>
                             </FormControl>
 
-                            {(query?.dateFilter == "earth_date" || !query?.dateFilter) && <FormControl>
+                            {(query?.dateFilter == "earth_date") && <FormControl>
                                 <FormLabel>Earth date</FormLabel>
                                 <Input type="date" name="dateValue" value={query?.dateValue ?? ""} onChange={handleChange} />
                                 <FormHelperText>Corresponding date on earth for the given sol</FormHelperText>
