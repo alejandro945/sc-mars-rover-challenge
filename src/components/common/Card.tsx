@@ -1,31 +1,34 @@
 import { Photo } from '@/src/models/types/Photo';
-import { Box, Center, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { CalendarIcon } from '@chakra-ui/icons';
+import { Avatar, Badge, Box, Center, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
-const IMAGE = 'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
 const Card: React.FC<Photo> = ({ id, img_src, rover, camera, sol, earth_date }) => {
     return (
-        <Center py={6}>
-            <Box role={'group'} p={6} maxW={'330px'} w={'full'} bg={'white'} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
-                <Box rounded={'lg'} mt={-12} pos={'relative'} height={'230px'}
-                    _after={{ transition: 'all .3s ease', content: '""', w: 'full', h: 'full', pos: 'absolute', top: 5, left: 0, backgroundImage: `url(${IMAGE})`, filter: 'blur(15px)', zIndex: -1, }}
-                    _groupHover={{ _after: { filter: 'blur(20px)' } }}>
-                    <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src={IMAGE} />
+        <Center >
+            <Box maxW={'445px'} w={'full'} bg={'white'} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
+                <Box h={'200px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+                    <Image src={img_src} alt={"Image"} objectFit={'cover'} height={200} width="100%" />
                 </Box>
-                <Stack pt={10} align={'center'}>
-                    <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                        Brand
-                    </Text>
-                    <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                        Nice Chair, pink
+                <Stack>
+                    <Stack direction="row" justifyContent="space-between">
+                        <Text color={'orange.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
+                            {rover.name}
+                        </Text>
+                        <Badge rounded="full" colorScheme={'orange'}>{` ${rover.status} `}</Badge>
+                    </Stack>
+                    <Heading color={'gray.700'} fontSize={'2xl'} fontFamily={'body'}>
+                        {camera.name}
                     </Heading>
-                    <Stack direction={'row'} align={'center'}>
-                        <Text fontWeight={800} fontSize={'xl'}>
-                            $57
-                        </Text>
-                        <Text textDecoration={'line-through'} color={'gray.600'}>
-                            $199
-                        </Text>
+                    <Text color={'gray.500'}>
+                        {camera.full_name}
+                    </Text>
+                </Stack>
+                <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+                    <Avatar bg="orange.500" icon={<CalendarIcon />}/>
+                    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+                        <Text color={'gray.500'}> <b>Earth :</b> {`${earth_date}`}</Text>
+                        <Text color={'gray.500'}> <b>Sol :</b> {`${sol}`}</Text>
                     </Stack>
                 </Stack>
             </Box>

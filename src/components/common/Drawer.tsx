@@ -3,12 +3,12 @@ import { cameras } from '@/src/models/constants/CameraType'
 import { RoverType } from '@/src/models/enums/RoverType'
 import { Query } from '@/src/models/types/Query'
 import { DeleteIcon, StarIcon } from '@chakra-ui/icons'
-import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormControl, FormHelperText, FormLabel, IconButton, Input, Select, useToast } from '@chakra-ui/react'
+import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormControl, FormHelperText, FormLabel, IconButton, Input, Select, Stack, useToast } from '@chakra-ui/react'
 import React from 'react'
 import SAlert from './Alert'
 
 const FilterDrawer = () => {
-    const { getStorage, handleComplete, handleChange, setModalOpen, isDrawerOpen, setDrawerOpen, query } = React.useContext(QueryContext) as QueryContextType
+    const { getStorage, handleComplete, handleChange, setModalOpen, isDrawerOpen, setDrawerOpen,setFilterData, query } = React.useContext(QueryContext) as QueryContextType
     const toast = useToast()
     return (
         <Drawer isOpen={isDrawerOpen} placement="right" onClose={() => setDrawerOpen(false)}>
@@ -22,16 +22,16 @@ const FilterDrawer = () => {
                     <Box border="1px dashed rgba(145, 158, 171, 0.5)" borderRadius={5} my={4} p={4} display="flex" alignItems="center">
                         <FormControl>
                             <FormLabel>Bookmarks</FormLabel>
-                            <Select value={query?.id} onChange={({ target }) => handleComplete(getStorage().get().find(val => val.id === Number(target.value)) as Query)} variant='filled' placeholder='Select bookmark'>
+                            <Select value={query?.id} onChange={({ target }) => handleComplete(getStorage().get().find(val => val.id === Number(target.value)))} variant='filled' placeholder='Select bookmark'>
                                 {getStorage().get().map((key: Query, index: number) => (<option key={index} value={key.id}>{key.name}</option>))}
                             </Select>
                         </FormControl>
-                        <IconButton onClick={() => { if (query?.name != undefined && query.name !== "") { getStorage().delete(query.id); toast({ title: "Bookmark successfully deleted", status: "info", isClosable: true }); setDrawerOpen(false) } }} ml={2} alignSelf="flex-end" aria-label='delete' colorScheme="red" icon={<DeleteIcon />} />
+                        <IconButton isDisabled={(query?.name === undefined || query?.name === "")} onClick={() => { getStorage().delete(query.id); toast({ title: "Bookmark successfully deleted", status: "info", isClosable: true }); handleComplete(undefined); setDrawerOpen(false) }} ml={2} alignSelf="flex-end" aria-label='delete' colorScheme="red" icon={<DeleteIcon />} />
                     </Box>
 
                     <form onSubmit={(e) => { e.preventDefault(); setModalOpen(true) }}>
                         <Box border="1px dashed rgba(145, 158, 171, 0.5)" borderRadius={5} p={4} sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                            <SAlert message='Search Section' type='warning' />
+                            <SAlert message={query?.rover ? 'Current Filter' : 'Default Filter'} type={query?.rover ? 'warning' : 'info'} />
                             <FormControl isRequired>
                                 <FormLabel>Rover</FormLabel>
                                 <Select name='rover' value={query?.rover} onChange={handleChange} placeholder='Select rover'>
@@ -49,7 +49,7 @@ const FilterDrawer = () => {
 
                             <FormControl>
                                 <FormLabel>Date Filter</FormLabel>
-                                <Select name='dateFilter' value={query?.dateFilter} onChange={handleChange} variant='outline' placeholder='Date type'>
+                                <Select name='dateFilter' value={query?.dateFilter} onChange={(e) => { handleChange(e, true) }} variant='outline' placeholder='Date type'>
                                     <option value={"earth_date"}>Earth date</option>
                                     <option value={"sol"}>Sol</option>
                                 </Select>
@@ -68,7 +68,10 @@ const FilterDrawer = () => {
                                 <FormHelperText> Ranges from 0 to max found in endpoint </FormHelperText>
                             </FormControl>}
 
-                            <Button variant='outline' type="submit" colorScheme="orange" leftIcon={<StarIcon />}>Add</Button>
+                            <Stack direction="row" gap={2} display="flex" justifyContent="flex-end" >
+                            <Button width="35%" variant='outline' onClick={() => {setFilterData(query); setDrawerOpen(false)}}>Filter</Button>
+                            <Button isDisabled={(query.name != undefined && query.name != '')} width="35%" variant='outline' type="submit" colorScheme="orange" leftIcon={<StarIcon />}>Add</Button>
+                            </Stack>
                         </Box>
                     </form>
 

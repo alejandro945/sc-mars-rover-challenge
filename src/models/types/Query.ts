@@ -8,8 +8,6 @@ export type Query = {
     camera: string
     dateFilter: DateType
     dateValue: string
-    page: string
-    default?: boolean
 }
 
 

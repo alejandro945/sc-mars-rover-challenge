@@ -1,5 +1,6 @@
 import { Alert, AlertIcon } from '@chakra-ui/react'
 import React from 'react'
+
 type Props = { message: string, type: "warning" | "info" | "success" | "error" | "loading" | undefined }
 const SAlert: React.FC<Props> = ({ message, type }) => {
     return (

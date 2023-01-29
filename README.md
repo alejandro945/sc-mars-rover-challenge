@@ -153,10 +153,45 @@ Also, photos are organized by the sol (Martian rotation or day) on which they we
 
 [**Taken from Nasa Apis Documentation**](https://api.nasa.gov)
 
+## Evidences
+
+- Landing Page
+   ![Skeleton](./public/docs/skeleton.png)
+
+- Instagram Effect ⭐️
+   ![Inifinite-Loading](./public/docs/effect.png)
+
+- Search Bar
+   ![Bar](./public/docs/search-bar.png)
+
+- Adding Bookmarks Modal
+   ![Modal](./public/docs/modal.png)
+
+- Toast Notifications
+   ![Skeleton](./public/docs/toast.png)
+
+- Eslint 
+   ![Eslint](./public/docs/eslint.png)
+
+## Enviroment Variables
+
+```bash
+API_ENDPOINT=https://api.nasa.gov/mars-photos/api/v1/rovers/
+API_KEY=GBT5DYgpgIEimLi3Gua9eisB3B6dsWOhKhhKn24K
+```
+
 ## Test Design
 
 
 ## Deployment
 
+**Vercel** enables you to develop, preview, and ship every Next.js feature, without configuration, to the best frontend infrastructure.
 
+1. Develop: Build Next.js sites that connect to your favorite APIs, databases, and content management systems.
+2. Preview: Integrate with any GitHub, GitLab, or Bitbucket repository for instant continuous deployment.
+3. Ship: Deploy your site to every edge node worldwide for the fastest Next.js sites. Static files, Serverless and    Edge Functions, and more.
+4. Monitor: Measure Core Web Vitals from actual devices your visitors are using with Vercel Analytics for Next.js.
 
+### Built-in CI/CD for Next.js sites
+
+Vercel has integrations for GitHub, GitLab, and Bitbucket to enable CI/CD for your Next.js site with zero configuration. Then, you can run automated tests for performance and reliability on every push. Pull and merge requests are deployed instantly to a unique URL, accessible to your entire team.
