@@ -3,7 +3,7 @@ import { Button, FormControl, FormHelperText, FormLabel, Input, Modal, ModalBody
 import React, { useState } from 'react'
 
 const SModal = () => {
-  const { getStorage, isModalOpen, setModalOpen, setDrawerOpen, query } = React.useContext(QueryContext) as QueryContextType
+  const { getStorage, isModalOpen, setModalOpen, setDrawerOpen, setFilterData, query } = React.useContext(QueryContext) as QueryContextType
   const toast = useToast()
   const [input, setInput] = useState("")
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)
@@ -24,7 +24,7 @@ const SModal = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button isDisabled={isError} colorScheme="orange" onClick={() => { getStorage().add({ ...query, name: input, id: Date.now() }); toast({ title: "Bookmark successfully added", status: "success", isClosable: true }); setInput(""); setModalOpen(false); setDrawerOpen(false) }}> Save </Button>
+          <Button isDisabled={isError} colorScheme="orange" onClick={() => { getStorage().add({ ...query, name: input, id: Date.now() }); toast({ title: "Bookmark successfully added", status: "success", isClosable: true }); setInput(""); setModalOpen(false); setFilterData(query); setDrawerOpen(false) }}> Save </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
