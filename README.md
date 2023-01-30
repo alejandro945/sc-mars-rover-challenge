@@ -204,11 +204,15 @@ await expect(locator).toBeEnabled()
 npx playwright show-report
 ```
 
+![Report](./public/docs/test-report.png)
+
 **Trace Files:**  Record a trace for each test (DOM Snapshots 📸)
 
 ```bash
 npx playwright test --trace on
 ```
+
+![Trace](./public/docs/trace.png)
 
 **Test Endpoints and filters**
 
@@ -244,9 +248,10 @@ npx playwright test --trace on
 }
 ```
 
+
 ## Deployment
 
-[Watch here 👇](https://sc-mars-rover-challenge-nl9q7j5bu-altagama.vercel.app/)
+[Watch here 👇](https://sc-mars-rover-challenge-n7m3ndpuq-altagama.vercel.app/)
 
 **Vercel** enables you to develop, preview, and ship every Next.js feature, without configuration, to the best frontend infrastructure.
 
